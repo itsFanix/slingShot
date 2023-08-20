@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slingshot/src/home/homePage.dart';
 
 import 'src/home/slingShotPage.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: const SlingShotPage(title: 'slingShot'),
+      home: HomePage(),
     );
   }
 }

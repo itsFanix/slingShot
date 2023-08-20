@@ -19,7 +19,7 @@ class UserCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   image:DecorationImage(
                     image: NetworkImage(userInfo!.imgUrl!,),
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                 ), 
                   shape: BoxShape.circle
                 ),
