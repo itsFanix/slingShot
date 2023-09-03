@@ -1,8 +1,11 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:scaled_list/scaled_list.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:slingshot/src/data/userlist.dart';
+import 'package:slingshot/src/pages/pulldown.dart';
 import 'package:slingshot/src/userCard.dart';
 
 class UserList extends StatefulWidget {
@@ -17,7 +20,24 @@ class UserList extends StatefulWidget {
 class _UserListState extends State<UserList> {
 
   int _focusedIndex=-1;
+  double currentPixel=0;
+  int duration=500;
 
+  late ScrollController listController;
+  double Function(double distance)? dynamicItemEquation;
+
+late double?dynamicItemOpacity;
+
+
+
+void animateScroll(double location){
+  Future.delayed(Duration.zero, () {
+    listController.animateTo(
+      location, 
+      duration: new Duration(milliseconds:duration),
+       curve: Curves.ease);
+  });
+}
 
 
   void initState(){
@@ -36,65 +56,42 @@ class _UserListState extends State<UserList> {
   }
 
 
-  double calculateScale(int index, double itemSize) {
-    //scroll-pixel position for index to be at the center of ScrollSnapList
-    double intendedPixel = index * itemSize;
-    double difference = intendedPixel - currentPixel;
-
-    if (widget.dynamicSizeEquation != null) {
-      //force to be >= 0
-      double scale = widget.dynamicSizeEquation!(difference);
-      return scale < 0 ? 0 : scale;
-    }
-
-    //default equation
-    return 1 - min(difference.abs() / 500, 0.4);
-  }
-
-  Widget _buildItem(BuildContext context, int index, double itemSize){
-
-    Widget child;
-    child =Transform.scale(
-      scale: calculateScale(index, itemSize),
-      child: ,
-
-    )
-
-
-    return child;
-  }
+void  _makeStory(){
+  print("Coucou");
+//  
+// Text("Hello");
+  
+}
 
   @override
   Widget build(BuildContext context) {
 
+        void _onItemFocus(int index) {
+    print(index);
+    setState(() {
+      _focusedIndex = index;
+    });
+  }
 
-      return ScrollSnapList(
-        onItemFocus: _onItemFocus,
-        itemCount:widget.users!.length,
-        dynamicItemSize: true,
-           itemBuilder: (context, index ){
-        UserModel currentUser= widget.users![index];
-        return UserCard(userInfo: currentUser);
 
-      }, itemSize: 90,);
-    // return ScaledList(
-      
-    //   itemCount: widget.users!.length,
-    //   itemBuilder: ((index, selectedIndex) {
-    //         UserModel currentUser= widget.users![index];
-    //      return UserCard(userInfo: currentUser);
-    //   }), itemColor: (int index) { 
-    //               return Colors.grey;
-
-    //    },
-    // );
-    // return ListView.builder(
-    //   scrollDirection: Axis.horizontal,
-    //   itemCount: widget.users!.length,
-    //   itemBuilder: (context, index ){
+    // return ScrollSnapList(
+    //       itemBuilder: (context, index ){
     //     UserModel currentUser= widget.users![index];
-    //     return UserCard(userInfo: currentUser);
+    //     return UserCard(userInfo: currentUser);},
+    //       itemCount: widget.users!.length, 
+    //       itemSize: 100,
+    //       onItemFocus: _onItemFocus,
+    //        dynamicItemSize: true);
 
-    //   });
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: widget.users!.length,
+      itemBuilder: (context, index ){
+        UserModel currentUser= widget.users![index];
+        return UserCard(userInfo: currentUser,
+        function: _makeStory,
+        );
+
+      });
   }
 }

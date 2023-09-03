@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:slingshot/src/home/homePage.dart';
+import 'package:slingshot/src/pages/homePage.dart';
 
-import 'src/home/slingShotPage.dart';
+import 'src/pages/slingShotPage.dart';
 
 
 
@@ -12,10 +12,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  const  MyApp({super.key});
+ 
   // This widget is the root of your application.
-  @override
+  @override        
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'slingshot',

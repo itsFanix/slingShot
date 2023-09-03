@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
-void main() => runApp(DynamicHorizontalDemo());
+
 
 class DynamicHorizontalDemo extends StatefulWidget {
   @override
@@ -50,22 +50,48 @@ class _DynamicHorizontalDemoState extends State<DynamicHorizontalDemo> {
   }
 
   Widget _buildListItem(BuildContext context, int index) {
+      double offsetY = 0.0;
+  double maxPullDownDistance = 500.0; // Set your maximum pull-down distance here
+  double containerHeight = 100.0;
     if (index == data.length)
       return Center(child: CircularProgressIndicator(),);
 
     //horizontal
-    return Container(
-      width: 150,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            height: 200,
-            width: 150,
-            color: Colors.lightBlueAccent,
-            child: Text("i:$index\n${data[index]}"),
-          )
-        ],
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {
+          setState(() {
+            print("coucou");
+             final double delta = details.primaryDelta ?? 0.0;
+           // Limit the offsetY to the maximum pull-down distance
+              offsetY = offsetY + delta> maxPullDownDistance
+                  ? maxPullDownDistance
+                  : (offsetY + delta) > 0.0 ? (offsetY + delta) : 0.0;
+          // offsetY += details.primaryDelta ?? 0;
+        });
+      },
+            onVerticalDragEnd: (details) {
+        // Reset the offsetY when the user releases their finger
+        setState(() {
+          offsetY = 0.0;
+        });
+      },
+      child: AnimatedContainer(
+        duration:Duration(milliseconds: 300) ,
+         decoration: BoxDecoration(
+                color: Colors.lightBlueAccent,
+                shape: BoxShape.circle     
+              ),
+        width: 150,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              height: 100,
+              width: 150,
+              child: Text("coucou"),
+            )
+          ],
+        ),
       ),
     );
   }

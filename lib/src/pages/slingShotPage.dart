@@ -18,10 +18,11 @@ class _SlingShotPageState extends State<SlingShotPage> {
         ),
         body: Column(children: [
           Container(
-            height: 180,
+            height: 250,
             child:  UserList(users: Users.userList),
+            
           )
          
         ]));
   }
-}
+} 
