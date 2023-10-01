@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "742487955858",
+    "project_id": "slingshotapp-839e0",
+    "storage_bucket": "slingshotapp-839e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742487955858:android:546653b296d9bfb205494b",
+        "android_client_info": {
+          "package_name": "com.example.slingshot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpeFipjk_8c8HH8mrUOJPRhhuy9IUSYCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

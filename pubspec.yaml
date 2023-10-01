@@ -38,6 +38,10 @@ dependencies:
   scaled_list: ^2.0.0
   scroll_snap_list: ^0.9.1
   snapping_sheet: ^3.1.0
+  firebase_core: ^2.16.0
+  firebase_auth: ^4.10.0
+  provider: ^6.0.5
+  cloud_firestore: ^4.9.1
 
 dev_dependencies:
   flutter_test:

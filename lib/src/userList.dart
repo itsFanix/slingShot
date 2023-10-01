@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:scaled_list/scaled_list.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
-import 'package:slingshot/src/data/userlist.dart';
-import 'package:slingshot/src/pages/pulldown.dart';
+import 'package:slingshot/data/userlist.dart';
+import 'package:slingshot/pages/pulldown.dart';
 import 'package:slingshot/src/userCard.dart';
 
 class UserList extends StatefulWidget {
@@ -92,6 +92,10 @@ void  _makeStory(){
         function: _makeStory,
         );
 
-      });
-  }
+       });
+  //    return UserCard(userInfo: widget.users![0],
+  //       function: _makeStory,
+  //       );
+  
+}
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:slingshot/src/data/userlist.dart';
+import 'package:slingshot/data/userlist.dart';
 import 'package:slingshot/src/userList.dart';
 
 class SlingShotPage extends StatefulWidget {

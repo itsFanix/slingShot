@@ -76,6 +76,7 @@ class _DynamicHorizontalDemoState extends State<DynamicHorizontalDemo> {
         });
       },
       child: AnimatedContainer(
+        margin: EdgeInsets.only(top: offsetY),
         duration:Duration(milliseconds: 300) ,
          decoration: BoxDecoration(
                 color: Colors.lightBlueAccent,

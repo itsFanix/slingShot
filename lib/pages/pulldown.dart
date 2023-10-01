@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../userCard.dart';
+import '../src/userCard.dart';
 
 
 class PullDownContainerWidget extends StatefulWidget {
@@ -48,6 +48,7 @@ class _PullDownContainerWidgetState extends State<PullDownContainerWidget> {
           margin: EdgeInsets.only(top: offsetY),
           child: widget.user,
         ),
+
       ),
     );
   }
